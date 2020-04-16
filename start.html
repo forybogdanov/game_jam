@@ -50,11 +50,11 @@
                 levelScript = "";
                 for (let i = 0; i < objects.length; i++) {
                     if (objects[i].type == 'rectangle') {
-                        levelScript += rectBeginningText + objects[i].x + "," + objects[i].y + "," + objects[i].width + "," + objects[i].height + "),";
+                        levelScript += rectBeginningText + (objects[i].x + objects[i].width/2) + "," + (objects[i].y + objects[i].height/2) + "," + objects[i].width + "," + objects[i].height + "),";
                     }
                     if (objects[i].type == "buttonAndDoor") {
-                        levelScript += bdBegginningText + objects[i].bX + "," + objects[i]
-.bY + "," + objects[i].dX + "," + objects[i].dY + "," + objects[i].sizeX + "," + objects[i].sizeY + "),"                   }
+                        levelScript += bdBegginningText + (objects[i].bX + buttonSize.x/2) + "," + (objects[i]
+.bY + buttonSize.y/2)+ "," + (objects[i].dX + objects[i].sizeX/2) + "," +(objects[i].dY + objects[i].sizeY/2) + "," + objects[i].sizeX + "," + objects[i].sizeY + "),"                   }
                 }
                 document.getElementById("levelScriptArea").textContent = levelScript;
                 

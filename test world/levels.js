@@ -37,4 +37,4 @@ class Rectangle {
     }
 }
 var levels = [];
-levels[0] = new Level("Level 1", [new Rectangle(97,97,140,233),new Rectangle(331,240,115,326),new Rectangle(602,414,-412,43),new Rectangle(92,444,176,43),new Rectangle(688,478,33,55),new Rectangle(692,409,-83,-37),new Rectangle(426,346,-203,46),new Rectangle(197,410,-13,31),new Rectangle(266,477,16,-3),new Rectangle(348,457,125,5),new Rectangle(534,454,14,-58),new Rectangle(551,360,0,-39),new ButtonAndDoor(537,144,537,159,10,167)]);
+levels[0] = new Level("Level 1", [new Rectangle(341,472,682,58),new Rectangle(680,252.5,-4,241),new Rectangle(774,148.5,-4,233),new Rectangle(695,-155,6,392)]);

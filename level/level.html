@@ -1,0 +1,45 @@
+<html>
+<body>
+</body>
+</html><!DOCTYPE html>
+<html>
+<head>   
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<script src="matter.js"></script>
+<script src="level.js"></script>
+<script src="levels.js"></script>
+<script src="game.js"></script>
+<script>
+    var isPaused = false;
+    var lvlBtn = document.getElementById("LevelButton");
+    var psBtn = document.getElementById("PauseButton");
+    var ctrlBtn = document.getElementById("ControlsButton");
+    var ctrls = document.getElementById("Controls");
+    function TogglePause() {
+        if (lvlBtn.style.display === "none") {
+            lvlBtn.style.display = "inline";
+            ctrlBtn.style.display = "inline";
+            psBtn.textContent = "Resume";
+            isPaused = true;
+        } else {
+            lvlBtn.style.display = "none";
+            ctrlBtn.style.display = "none";
+            psBtn.textContent = "Pause";
+            isPaused = false;
+        }
+        if (ctrls.style.display === "inline") {
+            ctrls.style.display = "none";
+        }
+    };
+    function ToggleControls() {
+        if (ctrls.style.display === "none") {
+            ctrls.style.display = "inline";
+        } else {
+            ctrls.style.display = "none";
+        }
+    };
+</script>
+</body>
+</html>

@@ -8,18 +8,9 @@
 </head>
 <body>
 <script src="matter.js"></script>
+<script src="level.js"></script>
 <script src="levels.js"></script>
 <script src="game.js"></script>
-    <div class="menu">
-        <ul>
-            <li><button type="button" onclick="TogglePause()" id="PauseButton">Pause</button></li>
-            <li><button type="button" style="display: none;" id="LevelButton">Level select</button></li>
-            <li><button type="button" style="display: none;" onclick="ToggleControls()" id="ControlsButton">Controls</button></li>
-        </ul>
-        <textarea rows="3" cols="30" readonly style="display: none" 
-        id="Controls">Move: w,a,s,d 
-Shoot: left mouse button</textarea>
-    </div>
 <script>
     var isPaused = false;
     var lvlBtn = document.getElementById("LevelButton");

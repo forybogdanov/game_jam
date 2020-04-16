@@ -1,6 +1,3 @@
-var clickedAt = {x:0, y:0}, offset = {x: 0, y: 0}, drawCurrentShape = false, mode = "create", currentShape = "rectangle", doorColor = "red", rectangleColor = "black", buttonColor = "blue";
-// Creating variables
-var objects=[], levelScript = "", rectBeginningText = "new Rectangle(", bdBegginningText = "new ButtonAndDoor(";
 function update() {
 }
 

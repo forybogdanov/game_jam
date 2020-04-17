@@ -29,7 +29,7 @@ function setState(){
 
 
 function update() {
-    if(buttons.length>0){
+    if(buttons.length==100){
         if(time%20==0){
             if(time==0){
                buttons[99].style.fontSize = "22px";

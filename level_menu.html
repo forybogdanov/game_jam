@@ -8,134 +8,136 @@
 </head>
 <body>
 <script src="matter.js"></script>
-<script src="levels_game.js"></script>
+<script src="game.js"></script>
 <script src="level_menu.js"></script>
+<script src="game.js"></script>
  
 <div id="menu_div">
     <p id="text">Select level:</p>
     <div id="menu">
         <div class="row">
-            <button class="button">1</button>
-            <button class="button">2</button>
-            <button class="button">3</button>
-            <button class="button">4</button>
-            <button class="button">5</button>
-            <button class="button">6</button>
-            <button class="button">7</button>
-            <button class="button">8</button>
-            <button class="button">9</button>
-            <button class="boss_button">10</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">1</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">2</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">3</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">4</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">5</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">6</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">7</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">8</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">9</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">10</button>
         </div>
         <div class="row">
-            <button class="button">11</button>
-            <button class="button">12</button>
-            <button class="button">13</button>
-            <button class="button">14</button>
-            <button class="button">15</button>
-            <button class="button">16</button>
-            <button class="button">17</button>
-            <button class="button">18</button>
-            <button class="button">19</button>
-            <button class="boss_button">20</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">11</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">12</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">13</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">14</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">15</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">16</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">17</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">18</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">19</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">20</button>
         </div>
         <div class="row">
-            <button class="button">21</button>
-            <button class="button">22</button>
-            <button class="button">23</button>
-            <button class="button">24</button>
-            <button class="button">25</button>
-            <button class="button">26</button>
-            <button class="button">27</button>
-            <button class="button">28</button>
-            <button class="button">29</button>
-            <button class="boss_button">30</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">21</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">22</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">23</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">24</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">25</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">26</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">27</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">28</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">29</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">30</button>
         </div>
         <div class="row">
-            <button class="button">31</button>
-            <button class="button">32</button>
-            <button class="button">33</button>
-            <button class="button">34</button>
-            <button class="button">35</button>
-            <button class="button">36</button>
-            <button class="button">37</button>
-            <button class="button">38</button>
-            <button class="button">39</button>
-            <button class="boss_button">40</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">31</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">32</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">33</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">34</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">35</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">36</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">37</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">38</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">39</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">40</button>
         </div>
         <div class="row">
-            <button class="button">41</button>
-            <button class="button">42</button>
-            <button class="button">43</button>
-            <button class="button">44</button>
-            <button class="button">45</button>
-            <button class="button">46</button>
-            <button class="button">47</button>
-            <button class="button">48</button>
-            <button class="button">49</button>
-            <button class="boss_button">50</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">41</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">42</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">43</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">44</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">45</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">46</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">47</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">48</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">49</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">50</button>
         </div>
         <div class="row">
-            <button class="button">51</button>
-            <button class="button">52</button>
-            <button class="button">53</button>
-            <button class="button">54</button>
-            <button class="button">55</button>
-            <button class="button">56</button>
-            <button class="button">57</button>
-            <button class="button">58</button>
-            <button class="button">59</button>
-            <button class="boss_button">60</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">51</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">52</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">53</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">54</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">55</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">56</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">57</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">58</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">59</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">60</button>
         </div>
         <div class="row">
-            <button class="button">61</button>
-            <button class="button">62</button>
-            <button class="button">63</button>
-            <button class="button">64</button>
-            <button class="button">65</button>
-            <button class="button">66</button>
-            <button class="button">67</button>
-            <button class="button">68</button>
-            <button class="button">69</button>
-            <button class="boss_button">70</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">61</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">62</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">63</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">64</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">65</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">66</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">67</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">68</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">69</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">70</button>
         </div>
         <div class="row">
-            <button class="button">71</button>
-            <button class="button">72</button>
-            <button class="button">73</button>
-            <button class="button">74</button>
-            <button class="button">75</button>
-            <button class="button">76</button>
-            <button class="button">77</button>
-            <button class="button">78</button>
-            <button class="button">79</button>
-            <button class="boss_button">80</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">71</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">72</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">73</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">74</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">75</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">76</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">77</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">78</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">79</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">80</button>
         </div>
         <div class="row">
-            <button class="button">81</button>
-            <button class="button">82</button>
-            <button class="button">83</button>
-            <button class="button">84</button>
-            <button class="button">85</button>
-            <button class="button">86</button>
-            <button class="button">87</button>
-            <button class="button">88</button>
-            <button class="button">89</button>
-            <button class="boss_button">90</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">81</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">82</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">83</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">84</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">85</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">86</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">87</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">88</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">89</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">90</button>
         </div>
         <div class="row">
-            <button class="button">91</button>
-            <button class="button">92</button>
-            <button class="button">93</button>
-            <button class="button">94</button>
-            <button class="button">95</button>
-            <button class="button">96</button>
-            <button class="button">97</button>
-            <button class="button">98</button>
-            <button class="button">99</button>
-            <button class="boss_button">100</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">91</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">92</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">93</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">94</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">95</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">96</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">97</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">98</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">99</button>
+            <button class="button" onclick="setLevel(this.innerHTML)">100</button>
         </div>
     </div>
-    <button id="new_level_button">Create level</button>
+    <a href="start.html"><button id="new_level_button" onclick="asdf()">Create level</button></a>
+    
 </div>
     
 <script>

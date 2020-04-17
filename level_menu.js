@@ -1,4 +1,40 @@
+function setLevel(level_){
+    let newLevel = parseInt(level_, 10);
+    if(isAvailable[newLevel-1]==1){
+        selectedLevel = newLevel-1;
+    }
+}
+
+var isAvailable = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ], br = 100;
+let time = 0;
+var buttons = document.getElementsByClassName("button");
+console.log(buttons[0]);
+
+function setState(){
+    for(let i=0; i<br; i++){
+        console.log(i, buttons[i], buttons[0]);
+        if(isAvailable[i]==0){
+            buttons[i].style.backgroundColor = "#999999";
+            buttons[i].style.borderColor = "#737373";
+        }else{
+            if(i>1 && i%9==0){
+                buttons[i].style.backgroundColor = "#ffcc00";
+                buttons[i].style.borderColor = "#cca300";
+            }else{
+                buttons[i].style.backgroundColor = "#3399ff";
+                buttons[i].style.borderColor = "#0066ff";
+            }
+        }
+    }
+}
+
+setState();
+
 function update() {
+    time++;
+    if(time%20==0){
+       setState();
+    }
 }
 
 function draw() {

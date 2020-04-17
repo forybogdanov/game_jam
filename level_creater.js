@@ -1,4 +1,4 @@
-﻿var clickedAt = {x:0, y:0}, offset = {x: 0, y: 0}, drawCurrentShape = false, mode = "create", currentShape = "rectangle", doorColor = "red", buttonSize = {x: 50, y: 10},  rectangleColor = "black", buttonColor = "blue", selectedObjectId, movingObject = false;
+﻿var clickedAt = {x:0, y:0}, offset = {x: 0, y: 0}, drawCurrentShape = false, mode = "create", currentShape = "rectangle", doorColor = "red", buttonSize = {x: 50, y: 10},  rectangleColor = "black", buttonColor = "blue", selectedObjectId, movingObject = false, whichPartOfObjectIsSelected;
 // Creating variables
 var objects=[], levelScript = "", rectBeginningText = "new Rectangle(", bdBegginningText = "new ButtonAndDoor(";
 function update() {
@@ -20,25 +20,48 @@ function update() {
                 objects[selectedObjectId].x = mouseX - objects[selectedObjectId].width/2 + offset.x;
                 objects[selectedObjectId].y = mouseY - objects[selectedObjectId].height/2 + offset.y;
             }
+            if (objects[selectedObjectId].type == "buttonAndDoor") {
+                if (whichPartOfObjectIsSelected == 0) {
+                    objects[selectedObjectId].bX = mouseX - buttonSize.x/2 + offset.x;
+                    objects[selectedObjectId].bY = mouseY - buttonSize.y/2 + offset.y;
+                }
+                if (whichPartOfObjectIsSelected == 1) {
+                    objects[selectedObjectId].dX = mouseX - objects[selectedObjectId].sizeX/2 + offset.x;
+                    objects[selectedObjectId].dY = mouseY - objects[selectedObjectId].sizeY/2 + offset.y;
+                }
+            }
         }
         if (isKeyPressed[87]) {
             if (objects[selectedObjectId].type == "rectangle") {
                 objects[selectedObjectId].height -= 1;
+            }
+            if (objects[selectedObjectId].type == "buttonAndDoor" && whichPartOfObjectIsSelected == 1) {
+                objects[selectedObjectId].sizeY -= 1;
             }
         }
         if (isKeyPressed[83]) {
             if (objects[selectedObjectId].type == "rectangle") {
                 objects[selectedObjectId].height += 1;
             }
+            if (objects[selectedObjectId].type == "buttonAndDoor" && whichPartOfObjectIsSelected == 1) {
+                objects[selectedObjectId].sizeY += 1;
+            }
         }
         if (isKeyPressed[65]) {
             if (objects[selectedObjectId].type == "rectangle") {
                 objects[selectedObjectId].width -= 1;
             }
+            if (objects[selectedObjectId].type == "buttonAndDoor" && whichPartOfObjectIsSelected == 1) {
+                    objects[selectedObjectId].sizeX -= 1;
+                }
         }
         if (isKeyPressed[68]) {
+            console.log(selectedObjectId);
             if (objects[selectedObjectId].type == "rectangle") {
                 objects[selectedObjectId].width += 1;
+            }
+            if (objects[selectedObjectId].type == "buttonAndDoor" && whichPartOfObjectIsSelected == 1) {
+                objects[selectedObjectId].sizeX += 1;
             }
         }
     }
@@ -53,10 +76,10 @@ function draw() {
             context.strokeRect(objects[i].x - offset.x, objects[i].y - offset.y, objects[i].width, objects[i].height);
         }
         if (objects[i].type == "buttonAndDoor") {
-            context.fillStyle = buttonColor;
-            context.fillRect(objects[i].bX - offset.x, objects[i].bY - offset.y, buttonSize.x, buttonSize.y);
-            context.fillStyle = doorColor;
-            context.fillRect(objects[i].dX - offset.x, objects[i].dY - offset.y, objects[i].sizeX, objects[i].sizeY);
+            context.strokeStyle = buttonColor;
+            context.strokeRect(objects[i].bX - offset.x, objects[i].bY - offset.y, buttonSize.x, buttonSize.y);
+            context.strokeStyle = doorColor;
+            context.strokeRect(objects[i].dX - offset.x, objects[i].dY - offset.y, objects[i].sizeX, objects[i].sizeY);
         }
     }
     if (drawCurrentShape && clickedAt.x < 800 && clickedAt.y < 600) {
@@ -76,6 +99,13 @@ function mousedown() {
     }
     if (mode == "edit" && selectedObjectId != undefined) {
         if (objects[selectedObjectId].type == "rectangle" && areColliding(objects[selectedObjectId].x - offset.x, objects[selectedObjectId].y - offset.y, objects[selectedObjectId].width, objects[selectedObjectId].height, mouseX, mouseY, 1, 1)) {
+            movingObject = true;
+        }
+        if (objects[selectedObjectId].type == "buttonAndDoor")
+        if (areColliding(objects[selectedObjectId].bX - offset.x, objects[selectedObjectId].bY - offset.y, buttonSize.x, buttonSize.y, mouseX, mouseY, 1, 1) && whichPartOfObjectIsSelected == 0) {
+            movingObject = true;
+        }
+        if (areColliding(objects[selectedObjectId].dX - offset.x, objects[selectedObjectId].dY - offset.y, objects[selectedObjectId].sizeX, objects[selectedObjectId].sizeY, mouseX, mouseY, 1, 1) && whichPartOfObjectIsSelected == 1) {
             movingObject = true;
         }
     }
@@ -105,6 +135,16 @@ function mouseup() {
             if (objects[i].type == "rectangle") {
                 if (areColliding(objects[i].x - offset.x, objects[i].y - offset.y, objects[i].width, objects[i].height, mouseX, mouseY, 1, 1)) {
                     selectedObjectId = i;
+                }
+            }
+            if (objects[i].type == "buttonAndDoor") {
+                if (areColliding(objects[i].bX - offset.x, objects[i].bY - offset.y, buttonSize.x, buttonSize.y, mouseX, mouseY, 1, 1)) {
+                    selectedObjectId = i;
+                    whichPartOfObjectIsSelected = 0;
+                }
+                if (areColliding(objects[i].dX - offset.x, objects[i].dY - offset.y, objects[i].sizeX, objects[i].sizeY, mouseX, mouseY, 1, 1)) {
+                    selectedObjectId = i;
+                    whichPartOfObjectIsSelected = 1;
                 }
             }
         }

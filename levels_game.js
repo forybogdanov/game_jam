@@ -3,7 +3,6 @@ let Engine = Matter.Engine,
 	World = Matter.World,
 	Bodies = Matter.Bodies;
 var mouseX = 0, mouseY =  0, portalColor = '#e5fa45', tramplinsColor = '#ff5c5c';
-var selectedLevel = 0;
 // create an engine
 let engine = Engine.create();
 

@@ -28,15 +28,6 @@
     border: 2px solid #0066ff;
     border-radius: 8px;
 }
-.boss_button{
-    width: 9%;
-    height: 9%;
-    font-size: 24px;
-    background-color: #ffcc00;
-    
-    border: 2px solid #cca300;
-    border-radius: 8px;
-}
 #new_level_button{
     width: 20%%;
     height: 6%;

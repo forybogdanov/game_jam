@@ -1,4 +1,4 @@
-﻿var clickedAt = {x:0, y:0}, offset = {x: 0, y: 0}, drawCurrentShape = false, mode = "create", currentShape = "rectangle", doorColor = "red", buttonSize = {x: 50, y: 10},  rectangleColor = "black", buttonColor = "blue", selectedObjectId, movingObject = false, whichPartOfObjectIsSelected;
+﻿var clickedAt = {x:0, y:0}, offset = {x: -200, y: -300}, drawCurrentShape = false, mode = "create", currentShape = "rectangle", doorColor = "red", buttonSize = {x: 50, y: 10},  rectangleColor = "black", buttonColor = "blue", selectedObjectId, movingObject = false, whichPartOfObjectIsSelected, copiedObject;
 // Creating variables
 var objects=[], levelScript = "", rectBeginningText = "new Rectangle(", bdBegginningText = "new ButtonAndDoor(";
 function update() {
@@ -85,11 +85,25 @@ function draw() {
     if (drawCurrentShape && clickedAt.x < 800 && clickedAt.y < 600) {
         if (currentShape == "rectangle" || currentShape == "buttonAndDoor") context.strokeRect(clickedAt.x, clickedAt.y, mouseX - clickedAt.x, mouseY - clickedAt.y);
     }
+    context.fillStyle = "black";
+    context.fillRect(-15 - offset.x, -15 - offset.y, 30, 30);
 };
-
 function keyup(key) {
     // Show the pressed keycode in the console
     console.log("Pressed", key);
+    if (key == 67 && isKeyPressed[17] && selectedObjectId != undefined) {
+        copiedObject = JSON.parse(JSON.stringify(objects[selectedObjectId]));
+    }
+    if (key == 86 && isKeyPressed[17] && selectedObjectId != undefined) {
+        copiedObject.x = mouseX + offset.x;
+        copiedObject.y = mouseY + offset.y;
+        objects.push(JSON.parse(JSON.stringify(copiedObject)));
+    }
+    if (key == 46 && selectedObjectId != undefined) {
+        objects[selectedObjectId] = objects[objects.length - 1];
+        objects.pop();
+        selectedObjectId = undefined;
+    }
 };
 function mousedown() {
     if (mode == "create") {

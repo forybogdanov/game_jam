@@ -37,4 +37,4 @@ class Rectangle {
     }
 }
 var levels = [];
-levels[0] = new Level("Level 1", [new Rectangle(218,184.5,436,81),new Rectangle(276,314,-346,-56)]);
+levels[0] = new Level("Level 1", [new Rectangle(249.5,46.5,675,39),new Rectangle(254.5,-101,125,-28),new Rectangle(141.5,-31.5,113,29),new Rectangle(304,-192.5,24,97),new Rectangle(383.5,-339.5,-17,241),new Rectangle(463,-608,17,249)]);

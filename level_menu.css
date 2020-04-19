@@ -8,25 +8,37 @@
     height: 99%;
     text-align: center;
 }
-#menu{
+#Menu{
     width: 40%;
     height: 50%;
     text-align: center;
-    margin-left: 30%;
-}
-.row{
-    width: 100%;
-    display: block;
-    padding: 0.1%;
+    /*margin-left: 30%;*/
+    display: inline;
 }
 .button{
     width: 9%;
     height: 9%;
     font-size: 24px;
     background-color: #3399ff;
+    padding: 0.1%;
     
     border: 2px solid #0066ff;
     border-radius: 8px;
+}
+.unactiveButton{
+    width: 9%;
+    height: 9%;
+    font-size: 24px;
+    background-color: #999999;
+    
+    border: 2px solid #737373;
+    border-radius: 8px;
+}
+.pairOfButton{
+    width: 9%;
+    height: 9%;
+    padding: 0.1%;
+    display: inline;
 }
 #new_level_button{
     width: 20%%;

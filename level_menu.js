@@ -4,8 +4,10 @@ var buttons = document.getElementsByClassName("button");
 var buttonLinks = document.getElementsByClassName("buttonLink");
 var unactiveButtons = document.getElementsByClassName("unactiveButton");
 var menu = document.getElementById("Menu");
+let allCookies = document.cookie;
+console.log(allCookies);
 
-class levelInfo(){
+class levelInfo{
     constructor(){
         this.selectedLevel = 0;
         this.isAvailable = [];
@@ -44,7 +46,7 @@ function fillLevels(){
                 buttons[i].style.backgroundColor = "#ffcc00";
                 buttons[i].style.borderColor = "#cca300";       
             }
-            if(isAvailable[i]==0){
+            if(info.isAvailable[i]==0){
                 buttonLinks[i].style.display = "none";
                 unactiveButtons[i].style.display = "inline";
             }else{
@@ -56,7 +58,7 @@ function fillLevels(){
 }
 
 function setState(){
-    for(let i=0; i<br; i++){
+    for(let i=0; i<info.brLevels; i++){
         if(info.isAvailable[i]==0){
             buttonLinks[i].style.display = "none";
             unactiveButtons[i].style.display = "inline";

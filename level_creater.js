@@ -1,4 +1,4 @@
-﻿var clickedAt = {x:0, y:0}, offset = {x: -200, y: -300}, drawCurrentShape = false, mode = "create", currentShape = "rectangle", doorColor = "red", buttonSize = {x: 50, y: 10},  rectangleColor = "black", buttonColor = "blue", selectedObjectId, movingObject = false, whichPartOfObjectIsSelected, copiedObject;
+﻿var clickedAt = {x:0, y:0}, offset = {x: -200, y: -300}, drawCurrentShape = false, mode = "create", currentShape = "rectangle", currSubType = "rectangle", currType = "rectangle", doorColor = "red", buttonSize = {x: 50, y: 10},  rectangleColor = "black", buttonColor = "blue", selectedObjectId, movingObject = false, whichPartOfObjectIsSelected, copiedObject;
 // Creating variables
 var objects=[], levelScript = "", rectBeginningText = "new Rectangle(", bdBegginningText = "new ButtonAndDoor(";
 function update() {
@@ -72,7 +72,8 @@ function draw() {
     context.strokeStyle = context.fillStyle;
     for (let i = 0; i < objects.length; i++) {
         if (objects[i].type == "rectangle") {
-            context.strokeStyle = rectangleColor;
+            if (objects[i].subType == "rectangle") context.strokeStyle = rectangleColor;
+            if (objects[i].subType == "endLevelButt") context.strokeStyle = "#ff9300";
             context.strokeRect(objects[i].x - offset.x, objects[i].y - offset.y, objects[i].width, objects[i].height);
         }
         if (objects[i].type == "buttonAndDoor") {
@@ -83,7 +84,7 @@ function draw() {
         }
     }
     if (drawCurrentShape && clickedAt.x < 800 && clickedAt.y < 600) {
-        if (currentShape == "rectangle" || currentShape == "buttonAndDoor") context.strokeRect(clickedAt.x, clickedAt.y, mouseX - clickedAt.x, mouseY - clickedAt.y);
+        if (currType == "rectangle" || currType == "buttonAndDoor") context.strokeRect(clickedAt.x, clickedAt.y, mouseX - clickedAt.x, mouseY - clickedAt.y);
     }
     context.fillStyle = "black";
     context.fillRect(-15 - offset.x, -15 - offset.y, 30, 30);
@@ -129,14 +130,14 @@ function mouseup() {
     console.log("Mouse clicked at", mouseX, mouseY);
 
     if (mode == "create" && mouseX <= 800 && mouseY <= 600) {
-        if (currentShape == "rectangle") {
-            let width = mouseX - clickedAt.x, height= mouseY - clickedAt.y;
-            objects.push({type: "rectangle", x: clickedAt.x + offset.x, y: clickedAt.y +  + offset.y, width: width, height: height});
+        if (currType == "rectangle") {
+            let width = mouseX - clickedAt.x, height = mouseY - clickedAt.y;
+            objects.push({type: currType, subType: currSubType, x: clickedAt.x + offset.x, y: clickedAt.y +  + offset.y, width: width, height: height});
             drawCurrentShape = false;
         }
-        if (currentShape == "buttonAndDoor") {
+        if (currType == "buttonAndDoor") {
             let width = mouseX - clickedAt.x, height= mouseY - clickedAt.y;
-            objects.push({type: "buttonAndDoor", bX: clickedAt.x + offset.x, bY: clickedAt.y + offset.y - 15, dX: clickedAt.x + offset.x, dY: clickedAt.y + offset.y, sizeX: width, sizeY: height});
+            objects.push({type: "buttonAndDoor", subType: "buttonAndDoor", bX: clickedAt.x + offset.x, bY: clickedAt.y + offset.y - 15, dX: clickedAt.x + offset.x, dY: clickedAt.y + offset.y, sizeX: width, sizeY: height});
             drawCurrentShape = false;
         }
     }

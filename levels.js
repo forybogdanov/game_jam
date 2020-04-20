@@ -13,6 +13,7 @@ class ButtonAndDoor {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         this.type = "buttonAndDoor";
+        this.subType = "buttonAndDoor";
         this.button = Matter.Bodies.rectangle(this.bX, this.bY, 50, 10, {isStatic: true, 
         render:{
                 fillStyle: "#ff0062",
@@ -34,7 +35,16 @@ class Rectangle {
     constructor(x, y, width, height) {
         this.body = Matter.Bodies.rectangle(x, y, width, height, {isStatic:true});
         this.type = "rectangle";
+        this.subType = "rectangle";
+    }
+}
+class EndLevelButt {
+    constructor(x, y, width, height) {
+        this.body = Matter.Bodies.rectangle(x, y, width, height, {isStatic:true});
+        this.type = "rectangle";
+        this.subType = "endLevelButt";
     }
 }
 var levels = [];
-levels[0] = new Level("Level 1", [new Rectangle(249.5,46.5,675,39),new Rectangle(254.5,-101,125,-28),new Rectangle(141.5,-31.5,113,29),new Rectangle(304,-192.5,24,97),new Rectangle(383.5,-339.5,-17,241),new Rectangle(463,-608,17,249)]);
+levels[0] = new Level("Level 1", [new Rectangle(170.5,118.5,367,79),new Rectangle(249.5,-62.5,35,157),new EndLevelButt(287.5,-189,55,48)]);
+levels[1] = new Level("Level 1", [new Rectangle(434,101,0,0),new Rectangle(180.5,94.5,439,57),new Rectangle(463,-58.5,-52,217)]);

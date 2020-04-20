@@ -50,12 +50,15 @@
             function CopyCode() {
                 levelScript = "";
                 for (let i = 0; i < objects.length; i++) {
-                    if (objects[i].type == 'rectangle') {
+                    if (objects[i].subType == 'rectangle') {
                         levelScript += rectBeginningText + (objects[i].x + objects[i].width/2) + "," + (objects[i].y + objects[i].height/2) + "," + objects[i].width + "," + objects[i].height + "),";
                     }
-                    if (objects[i].type == "buttonAndDoor") {
-                        levelScript += bdBegginningText + (objects[i].bX + buttonSize.x/2) + "," + (objects[i]
-.bY + buttonSize.y/2)+ "," + (objects[i].dX + objects[i].sizeX/2) + "," +(objects[i].dY + objects[i].sizeY/2) + "," + objects[i].sizeX + "," + objects[i].sizeY + "),"                   }
+                    if (objects[i].subType == "buttonAndDoor") {
+                        levelScript += bdBegginningText + (objects[i].bX + buttonSize.x/2) + "," + (objects[i].bY + buttonSize.y/2)+ "," + (objects[i].dX + objects[i].sizeX/2) + "," +(objects[i].dY + objects[i].sizeY/2) + "," + objects[i].sizeX + "," + objects[i].sizeY + "),";                   
+                    }
+                    if (objects[i].subType == 'endLevelButt') {
+                        levelScript += "new EndLevelButt(" + (objects[i].x + objects[i].width/2) + "," + (objects[i].y + objects[i].height/2) + "," + objects[i].width + "," + objects[i].height + "),";
+                    }
                 }
                 document.getElementById("levelScriptArea").textContent = levelScript;
                 
@@ -79,8 +82,9 @@
                     document.getElementById('modeButton').innerHTML = "Change mode to edit objects";
                 }
             }
-                function changeCurrentShape(a) {
-                    currentShape = a;
+                function changeCurrentShape(a, b) {
+                    currSubType = a;
+                    currType = b;
                     document.getElementById("shapeButton").innerHTML = "Current shape:" + a;
                 }
             // gridSize = 50; // uncomment or add to game.js if you want a grid
@@ -215,8 +219,9 @@
         <div class="dropdown">
             <button type="button" id="shapeButton">Current shape: rectangle</button>
             <div class="dropdown-content">
-                <button type="button" onclick="changeCurrentShape('rectangle')">Rectangle</button>
-                <button type="button" onclick="changeCurrentShape('buttonAndDoor')">ButtonAndDoor</button>
+                <button type="button" onclick="changeCurrentShape('rectangle', 'rectangle')">Rectangle</button>
+                <button type="button" onclick="changeCurrentShape('buttonAndDoor', 'buttonAndDoor')">ButtonAndDoor</button>
+                <button type="button" onclick="changeCurrentShape('endLevelButt', 'rectangle')">EndLevelButton</button>
             </div>
         </div>
         <textarea id="levelScriptArea" style="width: 10px;" readonly></textarea>

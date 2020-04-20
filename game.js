@@ -13,8 +13,9 @@ let render = Render.create({
     options:{hasBounds: true, wireframes: false}
 });
 render.options.background = "#adffa2";
+render.option
 
-var buttonsAndDoors = [];
+var buttonsAndDoors = [], endLevelButts = [];
 var cannonballs = [], lastBall = 0;
 var vector = {x: 0, y: 0};
 function shoot() {
@@ -127,79 +128,6 @@ function collisionStartHandler(ev) {
                 Matter.Body.setVelocity(ev.pairs[i].bodyA, {x: 0, y: - 15}); 
             }
         }
-        /*for(let n = 0; n < 1; n++){
-                if(ev.pairs[i].bodyA.id == portals[n][0].id){
-                    if(ev.pairs[i].bodyB.position.x < ev.pairs[i].bodyA.position.x){
-                        Matter.Body.setPosition(ev.pairs[i].bodyB, {x: portals[n][1].position.x + 50,
-                                                             y: portals[n][1].position.y});
-                    }else{
-                        Matter.Body.setPosition(ev.pairs[i].bodyB, {x: portals[n][1].position.x - 50,
-                                                             y: portals[n][1].position.y});
-
-                    }
-                } 
-                if(ev.pairs[i].bodyB.id == portals[n][0].id){
-                    if(ev.pairs[i].bodyA.position.x < ev.pairs[i].bodyB.position.x){
-                        Matter.Body.setPosition(ev.pairs[i].bodyA, {x: portals[n][1].position.x + 50,
-                                                         y: portals[n][1].position.y});
-                    }else{
-                        Matter.Body.setPosition(ev.pairs[i].bodyA, {x: portals[n][1].position.x - 50,
-                                                         y: portals[n][1].position.y});
-                    }
-                }
-                if(ev.pairs[i].bodyA.id == portals[n][1].id){
-                    if(ev.pairs[i].bodyB.position.x < ev.pairs[i].bodyA.position.x){
-                        Matter.Body.setPosition(ev.pairs[i].bodyB, {x: portals[n][0].position.x + 50,
-                                                         y: portals[n][0].position.y});
-                    }else{
-                        Matter.Body.setPosition(ev.pairs[i].bodyB, {x: portals[n][0].position.x - 50,
-                                                         y: portals[n][0].position.y});
-                    }
-                }
-                if(ev.pairs[i].bodyB.id == portals[n][1].id){
-                    if(ev.pairs[i].bodyA.position.x < ev.pairs[i].bodyB.position.x){
-                        Matter.Body.setPosition(ev.pairs[i].bodyA, {x: portals[n][0].position.x + 50,
-                                                         y: portals[n][0].position.y});
-                    }else{
-                        Matter.Body.setPosition(ev.pairs[i].bodyA, {x: portals[n][0].position.x - 50,
-                                                         y: portals[n][0].position.y});
-                    }
-                }
-            if(ev.pairs[i].bodyA.id == portals[n][0].id){
-                    if(ev.pairs[i].bodyB.position.y < ev.pairs[i].bodyA.position.y){
-                        Matter.Body.setPosition(ev.pairs[i].bodyB, {x: portals[n][1].position.x,
-                                                             y: portals[n][1].position.y + 50});
-                        console.log("right teleport");
-                    }else{
-                        Matter.Body.setPosition(ev.pairs[i].bodyB, {x: portals[n][1].position.x,
-                                                             y: portals[n][1].position.y} - 50);
-                        console.log("left teleport");
-
-                    }
-                } 
-                if(ev.pairs[i].bodyB.id == portals[n][0].id){
-                    if(ev.pairs[i].bodyA.position.y < ev.pairs[i].bodyB.position.y){
-                        Matter.Body.setPosition(ev.pairs[i].bodyA, {x: portals[n][1].position.x ,
-                                                         y: portals[n][1].position.y + 50});
-                        console.log("right teleport");
-                    }else{
-                        Matter.Body.setPosition(ev.pairs[i].bodyA, {x: portals[n][1].position.x,
-                                                         y: portals[n][1].position.y - 50});
-                        console.log("left teleport");
-                    }
-                }
-                if(ev.pairs[i].bodyA.id == portals[n][1].id){
-                    if(ev.pairs[i].bodyB.position.y < ev.pairs[i].bodyA.position.y){
-                        Matter.Body.setPosition(ev.pairs[i].bodyB, {x: portals[n][0].position.x,
-                                                         y: portals[n][0].position.y + 50});
-                        console.log("right teleport");
-                    }else{
-                        Matter.Body.setPosition(ev.pairs[i].bodyB, {x: portals[n][0].position.x,
-                                                         y: portals[n][0].position.y - 50});
-                        console.log("left teleport");
-                    }
-                }
-        }*/
 		if(ev.pairs[i].bodyA.id == player.id || ev.pairs[i].bodyB.id == player.id) {
             let t = 0;
             for (let b = 0; b < cannonballs.length; b++) {
@@ -224,6 +152,13 @@ function collisionStartHandler(ev) {
                 buttonsAndDoors[h].openDoor();
             }
         }
+        for (let j = 0; j < endLevelButts.length; j++) {
+             if ((ev.pairs[i].bodyA.id == endLevelButts[j].body.id 
+                && ev.pairs[i].bodyB.id == player.id) || (ev.pairs[i].bodyB.id == endLevelButts[j].body.id 
+                && ev.pairs[i].bodyA.id == player.id)) {
+                endLevel();
+            }
+        }
 	}
 };
 
@@ -241,18 +176,36 @@ function collisionEndHandler(ev) {
 		}
 	}
 }
-function loadLevel() {
-    for (let i = 0; i < levels[selectedLevel].objects.length; i++) {
-        if (levels[selectedLevel].objects[i].type == "rectangle") {
-            World.add(engine.world, levels[selectedLevel].objects[i].body);
+function endLevel() {
+    isAvailable[selectedLevel + 1] = 1;
+    isPaused = true;
+    document.getElementById('nextLevelButton').style.display = 'block';
+};
+function loadNextLevel() {
+    for (let i = levels[selectedLevel].objects.length - 1; i > -1; i--) {
+        World.remove(engine.world, levels[selectedLevel].objects[i].body);
+    }
+    selectedLevel++;
+    loadLevel(selectedLevel);
+    player.position.x = 0;
+    player.position.y = 0;
+};
+function loadLevel(s) {
+    for (let i = 0; i < levels[s].objects.length; i++) {
+        if (levels[s].objects[i].subType == "rectangle") {
+            World.add(engine.world, levels[s].objects[i].body);
         }
-        if (levels[selectedLevel].objects[i].type == "buttonAndDoor") {
-            buttonsAndDoors.push(levels[selectedLevel].objects[i]);
-            World.add(engine.world, levels[selectedLevel].objects[i].button);
-            World.add(engine.world, levels[selectedLevel].objects[i].door);
+        if (levels[s].objects[i].subType == "buttonAndDoor") {
+            buttonsAndDoors.push(levels[s].objects[i]);
+            World.add(engine.world, levels[s].objects[i].button);
+            World.add(engine.world, levels[s].objects[i].door);
+        }
+        if (levels[s].objects[i].subType == "endLevelButt") {
+            endLevelButts.push(levels[s].objects[i]);
+            World.add(engine.world, levels[s].objects[i].body);
         }
     }
 };
-loadLevel();
+loadLevel(selectedLevel);
 Engine.run(engine);
 Render.run(render);

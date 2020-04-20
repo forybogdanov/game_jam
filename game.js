@@ -184,11 +184,19 @@ function endLevel() {
 function loadNextLevel() {
     document.getElementById('nextLevelButton').style.display = 'none';
     for (let i = levels[selectedLevel].objects.length - 1; i > -1; i--) {
-        World.remove(engine.world, levels[selectedLevel].objects[i].body);
+        if (levels[selectedLevel].objects[i].type == "rectangle") World.remove(engine.world, levels[selectedLevel].objects[i].body);
+        if (levels[selectedLevel].objects[i].type == "buttonAndDoor") {
+            World.remove(engine.world, levels[selectedLevel].objects[i].button);
+            World.remove(engine.world, levels[selectedLevel].objects[i].door);
+        }
     }
     World.remove(engine.world, player);
     selectedLevel++;
     loadLevel(selectedLevel);
+    Matter.Body.setPosition(player, {x: 0, y: 0});
+    Matter.Body.setVelocity(player, {x: 0, y: 0});
+    Matter.Body.setAngle(player, 0);
+    Matter.Body.setAngularVelocity(player, 0);
     World.add(engine.world, player);
     isPaused = false;
 };

@@ -177,7 +177,7 @@ function collisionEndHandler(ev) {
 	}
 }
 function endLevel() {
-    isAvailable[selectedLevel + 1] = 1;
+    info.isAvailable[info.selectedLevel + 1] = 1;
     isPaused = true;
     document.getElementById('nextLevelButton').style.display = 'block';
 };
@@ -197,6 +197,8 @@ function loadNextLevel() {
     Matter.Body.setVelocity(player, {x: 0, y: 0});
     Matter.Body.setAngle(player, 0);
     Matter.Body.setAngularVelocity(player, 0);
+    info.selectedLevel++;
+    loadLevel(info.selectedLevel);
     World.add(engine.world, player);
     isPaused = false;
 };

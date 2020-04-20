@@ -49,3 +49,4 @@ var levels = [];
 levels[0] = new Level("Level 1", [new Rectangle(170.5,118.5,367,79),new Rectangle(249.5,-62.5,35,157),new EndLevelButt(287.5,-189,55,48)]);
 levels[1] = new Level("Level 1", [new Rectangle(104,32,344,-12),new Rectangle(304,-23,8,387),new Rectangle(374,-483,8,387),new Rectangle(468,-908,8,387),new EndLevelButt(545,-1144,24,11)]);
 levels[2] = new Level("Level 1", [new Rectangle(162,9,155,30),new Rectangle(293,-71,155,30),new Rectangle(436,-151,155,30),new Rectangle(9,28.5,70,-1)]);
+

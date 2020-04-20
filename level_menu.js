@@ -1,20 +1,34 @@
-function setLevel(level_){
-    let newLevel = parseInt(level_, 10);
-    selectedLevel = newLevel-1;
-    console.log(newLevel-1);
-}
-
-var isAvailable = [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ], br = 100;
 let time = 0;
 var pairOfButtons = document.getElementsByClassName("pairOfButton");
 var buttons = document.getElementsByClassName("button");
 var buttonLinks = document.getElementsByClassName("buttonLink");
 var unactiveButtons = document.getElementsByClassName("unactiveButton");
 var menu = document.getElementById("Menu");
-var selectedLevel = 0;
+
+class levelInfo(){
+    constructor(){
+        this.selectedLevel = 0;
+        this.isAvailable = [];
+        this.brLevels = 100;
+        for(let i=0; i<this.brLevels; i++){
+            if(i==0){
+                this.isAvailable[i] = 1;   
+            }else{
+                this.isAvailable[i] = 0;
+            }
+        }
+    }
+}
+var info = new levelInfo();
+
+function setLevel(level_){
+    let newLevel = parseInt(level_, 10);
+    info.selectedLevel = newLevel-1;
+    console.log(newLevel-1);
+}
 
 function fillLevels(){
-    for(let i=1; i<br; i++){
+    for(let i=1; i<info.brLevels; i++){
         if(pairOfButtons.length>0 && menu!=null){
             let newRow = pairOfButtons[0].cloneNode(true);
             menu.appendChild(newRow);
@@ -43,7 +57,7 @@ function fillLevels(){
 
 function setState(){
     for(let i=0; i<br; i++){
-        if(isAvailable[i]==0){
+        if(info.isAvailable[i]==0){
             buttonLinks[i].style.display = "none";
             unactiveButtons[i].style.display = "inline";
         }else{

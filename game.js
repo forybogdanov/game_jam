@@ -177,18 +177,18 @@ function collisionEndHandler(ev) {
 	}
 }
 function endLevel() {
-    isAvailable[selectedLevel + 1] = 1;
+    info.isAvailable[info.selectedLevel + 1] = 1;
     isPaused = true;
     document.getElementById('nextLevelButton').style.display = 'block';
 };
 function loadNextLevel() {
     document.getElementById('nextLevelButton').style.display = 'none';
-    for (let i = levels[selectedLevel].objects.length - 1; i > -1; i--) {
-        World.remove(engine.world, levels[selectedLevel].objects[i].body);
+    for (let i = levels[info.selectedLevel].objects.length - 1; i > -1; i--) {
+        World.remove(engine.world, levels[info.selectedLevel].objects[i].body);
     }
     World.remove(engine.world, player);
-    selectedLevel++;
-    loadLevel(selectedLevel);
+    info.selectedLevel++;
+    loadLevel(info.selectedLevel);
     World.add(engine.world, player);
     isPaused = false;
 };

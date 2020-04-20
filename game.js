@@ -182,13 +182,15 @@ function endLevel() {
     document.getElementById('nextLevelButton').style.display = 'block';
 };
 function loadNextLevel() {
+    document.getElementById('nextLevelButton').style.display = 'none';
     for (let i = levels[selectedLevel].objects.length - 1; i > -1; i--) {
         World.remove(engine.world, levels[selectedLevel].objects[i].body);
     }
+    World.remove(engine.world, player);
     selectedLevel++;
     loadLevel(selectedLevel);
-    player.position.x = 0;
-    player.position.y = 0;
+    World.add(engine.world, player);
+    isPaused = false;
 };
 function loadLevel(s) {
     for (let i = 0; i < levels[s].objects.length; i++) {

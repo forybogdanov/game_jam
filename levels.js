@@ -47,4 +47,4 @@ class EndLevelButt {
 }
 var levels = [];
 levels[0] = new Level("Level 1", [new Rectangle(170.5,118.5,367,79),new Rectangle(249.5,-62.5,35,157),new EndLevelButt(287.5,-189,55,48)]);
-levels[1] = new Level("Level 1", [new Rectangle(434,101,0,0),new Rectangle(180.5,94.5,439,57),new Rectangle(463,-58.5,-52,217)]);
+levels[1] = new Level("Level 1", [new Rectangle(434,101,0,0),new Rectangle(180.5,94.5,439,57),new Rectangle(463,-58.5,-52,217),new Rectangle(-106.5,-75,57,314),new Rectangle(176.5,-213.5,419,31)]);

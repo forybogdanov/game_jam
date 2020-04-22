@@ -1,3 +1,10 @@
+function setLevel(level_){
+    let newLevel = parseInt(level_, 10);
+    selectedLevel = newLevel-1;
+    console.log(newLevel-1);
+}
+
+var isAvailable = [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], br = 100;
 let time = 0;
 var pairOfButtons = document.getElementsByClassName("pairOfButton");
 var buttons = document.getElementsByClassName("button");

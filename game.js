@@ -178,6 +178,7 @@ function collisionEndHandler(ev) {
 }
 function endLevel() {
     info.isAvailable[info.selectedLevel + 1] = 1;
+    setCookies();
     isPaused = true;
     document.getElementById('nextLevelButton').style.display = 'block';
 };
@@ -208,6 +209,6 @@ function loadLevel(s) {
         }
     }
 };
-loadLevel(selectedLevel);
+loadLevel(info.selectedLevel);
 Engine.run(engine);
 Render.run(render);

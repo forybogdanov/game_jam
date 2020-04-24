@@ -46,7 +46,7 @@ function getCookieObject(){
 function setCookies(){
     allCookies = getCookieObject();
     if(allCookies.selectedLevel == undefined){
-        alert("This site is using cookies for progress tracking.");
+        //alert("This site is using cookies for progress tracking.");
     }
     setCookie("selectedLevel", info.selectedLevel);
     setCookie("isAvailable", info.isAvailable);

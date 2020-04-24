@@ -184,40 +184,60 @@ function endLevel() {
 };
 function loadNextLevel() {
     document.getElementById('nextLevelButton').style.display = 'none';
-    for (let i = levels[selectedLevel].objects.length - 1; i > -1; i--) {
-        if (levels[selectedLevel].objects[i].type == "rectangle") World.remove(engine.world, levels[selectedLevel].objects[i].body);
-        if (levels[selectedLevel].objects[i].type == "buttonAndDoor") {
-            World.remove(engine.world, levels[selectedLevel].objects[i].button);
-            World.remove(engine.world, levels[selectedLevel].objects[i].door);
+    for (let i = levels[info.selectedLevel].objects.length - 1; i > -1; i--) {
+        if (levels[info.selectedLevel].objects[i].type == "rectangle") World.remove(engine.world, levels[info.selectedLevel].objects[i].body);
+        if (levels[info.selectedLevel].objects[i].type == "buttonAndDoor") {
+            World.remove(engine.world, levels[info.selectedLevel].objects[i].button);
+            World.remove(engine.world, levels[info.selectedLevel].objects[i].door);
         }
     }
     World.remove(engine.world, player);
-    selectedLevel++;
-    loadLevel(selectedLevel);
+    info.selectedLevel++;
+    loadLevel(info.selectedLevel);
     Matter.Body.setPosition(player, {x: 0, y: 0});
     Matter.Body.setVelocity(player, {x: 0, y: 0});
     Matter.Body.setAngle(player, 0);
     Matter.Body.setAngularVelocity(player, 0);
-    info.selectedLevel++;
-    loadLevel(info.selectedLevel);
     World.add(engine.world, player);
     isPaused = false;
 };
 function loadLevel(s) {
-    for (let i = 0; i < levels[s].objects.length; i++) {
-        if (levels[s].objects[i].subType == "rectangle") {
-            World.add(engine.world, levels[s].objects[i].body);
-        }
-        if (levels[s].objects[i].subType == "buttonAndDoor") {
-            buttonsAndDoors.push(levels[s].objects[i]);
-            World.add(engine.world, levels[s].objects[i].button);
-            World.add(engine.world, levels[s].objects[i].door);
-        }
-        if (levels[s].objects[i].subType == "endLevelButt") {
-            endLevelButts.push(levels[s].objects[i]);
-            World.add(engine.world, levels[s].objects[i].body);
+    console.log(info.selectedLevel);
+    if(levels[s] != undefined){
+        for (let i = 0; i < levels[s].objects.length; i++) {
+            if (levels[s].objects[i].subType == "rectangle") {
+                World.add(engine.world, levels[s].objects[i].body);
+            }
+            if (levels[s].objects[i].subType == "buttonAndDoor") {
+                buttonsAndDoors.push(levels[s].objects[i]);
+                World.add(engine.world, levels[s].objects[i].button);
+                World.add(engine.world, levels[s].objects[i].door);
+            }
+            if (levels[s].objects[i].subType == "endLevelButt") {
+                endLevelButts.push(levels[s].objects[i]);
+                World.add(engine.world, levels[s].objects[i].body);
+            }
         }
     }
+};
+function loadExactLevel(s) {
+    document.getElementById('nextLevelButton').style.display = 'none';
+    for (let i = levels[info.selectedLevel].objects.length - 1; i > -1; i--) {
+        if (levels[info.selectedLevel].objects[i].type == "rectangle") World.remove(engine.world, levels[info.selectedLevel].objects[i].body);
+        if (levels[info.selectedLevel].objects[i].type == "buttonAndDoor") {
+            World.remove(engine.world, levels[info.selectedLevel].objects[i].button);
+            World.remove(engine.world, levels[info.selectedLevel].objects[i].door);
+        }
+    }
+    World.remove(engine.world, player);
+    info.selectedLevel=s;
+    loadLevel(info.selectedLevel);
+    Matter.Body.setPosition(player, {x: 0, y: 0});
+    Matter.Body.setVelocity(player, {x: 0, y: 0});
+    Matter.Body.setAngle(player, 0);
+    Matter.Body.setAngularVelocity(player, 0);
+    World.add(engine.world, player);
+    isPaused = false;
 };
 loadLevel(info.selectedLevel);
 Engine.run(engine);

@@ -11,8 +11,7 @@ var buttons = document.getElementsByClassName("button");
 var buttonLinks = document.getElementsByClassName("buttonLink");
 var unactiveButtons = document.getElementsByClassName("unactiveButton");
 var menu = document.getElementById("Menu");
-let allCookies = document.cookie;
-console.log(allCookies);
+let allCookies;
 
 class levelInfo{
     constructor(){
@@ -29,6 +28,47 @@ class levelInfo{
     }
 }
 var info = new levelInfo();
+
+function setCookie(name,value,expires){
+    document.cookie = name + "=" + value + ((expires==null) ? "" : ";expires=" + expires.toGMTString());
+}
+function getCookieObject(){
+    let str = document.cookie;
+    str = str.split('; ');
+    var result = {};
+    for (var i = 0; i < str.length; i++) {
+        var cur = str[i].split('=');
+        result[cur[0]] = cur[1];
+    }
+    return result;
+}
+
+function setCookies(){
+    allCookies = getCookieObject();
+    if(allCookies.selectedLevel == undefined){
+        alert("This site is using cookies for progress tracking.");
+    }
+    setCookie("selectedLevel", info.selectedLevel);
+    setCookie("isAvailable", info.isAvailable);
+    setCookie("brLevels", info.brLevels);
+}
+function applyCookies(){
+    allCookies = getCookieObject();
+    if(allCookies.selectedLevel != undefined){
+        info.isAvailable = JSON.parse("[" + allCookies.isAvailable + "]");
+        info.selectedLevel = parseInt(allCookies.selectedLevel, 10);
+    }
+}
+
+applyCookies();
+setCookies();
+
+function setLevel(level_){
+    let newLevel = parseInt(level_, 10);
+    info.selectedLevel = newLevel-1;
+    console.log(newLevel-1);
+    setCookies();
+}
 
 function fillLevels(){
     for(let i=1; i<info.brLevels; i++){

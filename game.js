@@ -199,7 +199,7 @@ function loadNextLevel() {
     Matter.Body.setAngle(player, 0);
     Matter.Body.setAngularVelocity(player, 0);
     World.add(engine.world, player);
-    isPaused = false;
+    isPaused = false;   
 };
 function loadLevel(s) {
     console.log(info.selectedLevel);

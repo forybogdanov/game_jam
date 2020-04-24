@@ -30,12 +30,6 @@ class levelInfo{
 }
 var info = new levelInfo();
 
-function setLevel(level_){
-    let newLevel = parseInt(level_, 10);
-    info.selectedLevel = newLevel-1;
-    console.log(newLevel-1);
-}
-
 function fillLevels(){
     for(let i=1; i<info.brLevels; i++){
         if(pairOfButtons.length>0 && menu!=null){

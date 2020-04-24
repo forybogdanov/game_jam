@@ -51,5 +51,5 @@ levels[1] = new Level("Level 2", [new Rectangle(80,20,200,15),new Rectangle(340,
 levels[2] = new Level("Level 3", [new Rectangle(85,25,200,15),new Rectangle(177.5,-45,15,-153.5),new Rectangle(280,-115,220,15),new EndLevelButt(365,-145,45,45)]);
 levels[3] = new Level("Level 4", [new Rectangle(270,40,600,15),new ButtonAndDoor(235,-100,280,-25,15,100),new EndLevelButt(540,10,45,45)]);
 levels[4] = new Level("Level 5", [new Rectangle(60,30,150,15),new Rectangle(200,-10,50,15),new Rectangle(300,-60,50,15),new Rectangle(405,-100,50,15),new Rectangle(515,-155,50,15),new Rectangle(670,-205,130,15),new EndLevelButt(710,-235,45,45)]);
-levels[5] = new Level("Level 6", [new Rectangle(60,30,150,15),new Rectangle(200,-10,50,15),new Rectangle(300,-60,50,15),new Rectangle(405,-100,50,15),new Rectangle(515,-155,50,15),new Rectangle(670,-205,130,15),new EndLevelButt(710,-235,45,45)]);
+levels[5] = new Level("Level 1", [new Rectangle(80,31.5,360,-13),new Rectangle(267,-82,12,242),new Rectangle(198,-416,12,242),new Rectangle(278,-742,12,242),new Rectangle(598,-853,88,19),new Rectangle(393,-853,88,19),new Rectangle(783,-853,88,19),new Rectangle(1020,-388,58,19),new EndLevelButt(1027.5,-449,119,78)]);
 
